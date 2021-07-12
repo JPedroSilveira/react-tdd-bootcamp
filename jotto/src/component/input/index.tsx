@@ -4,7 +4,9 @@ export interface InputProps {
     onSubmit: (guess: string) => void
 }
 
-const Input: React.FC<InputProps> = () => {
+const Input: React.FC<InputProps> = ({
+    onSubmit
+}) => {
     const [currentGuess, setCurrentGuess] = useState('')
 
     const handleGuessChange = (changeEvent: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,6 +15,7 @@ const Input: React.FC<InputProps> = () => {
 
     const handleSubmitClick = (clickEvent: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         clickEvent.preventDefault()
+        onSubmit(currentGuess)
         setCurrentGuess('')
     }
 
