@@ -1,11 +1,6 @@
-import Enzyme , { shallow } from 'enzyme'
-import EnzymeAdapter from '@wojtekmaj/enzyme-adapter-react-17'
+import { shallow } from 'enzyme'
 import App from './App'
 import { findByTestAttribute } from './test/TestUtils'
-
-Enzyme.configure({
-    adapter: new EnzymeAdapter()
-})
 
 const setup = () => {
     return shallow(<App />)
@@ -14,7 +9,7 @@ const setup = () => {
 test('renders without error', () => {
   const wrapper = setup()
   const mainElement = findByTestAttribute(wrapper, 'app')
-  expect(mainElement.length).toBe(1)
+  expect(mainElement.exists()).toBeTruthy()
 });
 
 test('renders title', () => {
@@ -22,3 +17,15 @@ test('renders title', () => {
     const titleElement = findByTestAttribute(wrapper, 'app-title')
     expect(titleElement.text().length).not.toBe(0)
 });
+
+test('renders guess-box', () => {
+    const wrapper = setup()
+    const guessBoxComponent = findByTestAttribute(wrapper, 'app-guess-box')
+    expect(guessBoxComponent.exists()).toBeTruthy()
+})
+
+test('renders guessed words', () => {
+    const wrapper = setup()
+    const guessedWordsComponent = findByTestAttribute(wrapper, 'app-guessed-words')
+    expect(guessedWordsComponent.exists()).toBeTruthy()
+})
