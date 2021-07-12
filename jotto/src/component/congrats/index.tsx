@@ -7,7 +7,6 @@ export interface CongratsProps {
 const Congrats: React.FC<CongratsProps> = ({
     success
 }) => {
-
     const getMessage = (): String => {
         return success ? "Congratulations, you won!" : ""
     }
