@@ -1,5 +1,6 @@
 import React from 'react'
 import GuessedWord from '../../type/GuessedWord'
+import './styles.css'
 
 export interface GuessedWordsProps {
     words: GuessedWord[]
@@ -45,7 +46,7 @@ const GuessedWords: React.FC<GuessedWordsProps> = ({
     }
     
     return (
-        <div data-test='guessed-words'>
+        <div className='guessed-words' data-test='guessed-words'>
             {words.length > 0 ? renderGuessedSection() : renderInstruction()}
         </div>
     )
