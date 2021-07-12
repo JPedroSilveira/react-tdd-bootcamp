@@ -15,14 +15,16 @@ const GuessedWords: React.FC<GuessedWordsProps> = ({
             </p>
         )
     }
-    const renderGuessedTable = () => {
+    const renderGuessedWordsSection = () => {
         return (
-            <div></div>
+            <div>
+                
+            </div>
         )
     }
     return (
         <div data-test='guessed-words'>
-            {words.length > 0 ? renderGuessedTable() : renderInstruction()}
+            {words.length > 0 ? renderGuessedWordsSection() : renderInstruction()}
         </div>
     )
 }

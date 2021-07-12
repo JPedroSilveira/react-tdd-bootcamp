@@ -4,9 +4,17 @@ import { findByTestAttribute } from '../../test/TestUtils'
 import GuessedWords, { GuessedWordsProps } from '.'
 import { ShallowWrapper } from 'enzyme'
 
-const defaultProps: GuessedWordsProps = {
+const oneGuessedWordProps: GuessedWordsProps = {
     words: [
         { value: 'test', letterMatchCount: 3 }
+    ]
+}
+
+const threeGuessedWordProps: GuessedWordsProps = {
+    words: [
+        { value: 'blueberry', letterMatchCount: 3 },
+        { value: 'watermelon', letterMatchCount: 3 },
+        { value: 'sugar', letterMatchCount: 3 },
     ]
 }
 
@@ -14,12 +22,8 @@ const emptyProps: GuessedWordsProps = {
     words: []
 }
 
-const setup = (props?: GuessedWordsProps) => {
-    if (props) {
-        return shallow(<GuessedWords {...props} />)
-    }
-
-    return shallow(<GuessedWords {...defaultProps} />)
+const setup = (props: GuessedWordsProps) => {
+    return shallow(<GuessedWords {...props} />)
 }
 
 describe('if there are no words guessed', () => {
@@ -42,5 +46,24 @@ describe('if there are no words guessed', () => {
 })
 
 describe('if there are words guessed', () => {
-
+    test('render without error', () => {
+        const wrapper = setup(oneGuessedWordProps)
+        const mainElement = findByTestAttribute(wrapper, 'guessed-words')
+        expect(mainElement.length).toBe(1)
+    })
+    test('render guessed words section', () => {
+        const wrapper = setup(oneGuessedWordProps)
+        const guessedWordsSectionElement = findByTestAttribute(wrapper, 'guessed-words-section')
+        expect(guessedWordsSectionElement.length).toBe(1)
+    })
+    test('correct number of guessed words (1)', () => {
+        const wrapper = setup(oneGuessedWordProps)
+        const guessedWordsTableItemElement = findByTestAttribute(wrapper, 'guessed-words-table-item')
+        expect(guessedWordsTableItemElement.length).toBe(1)
+    })
+    test('correct number of guessed words (3)', () => {
+        const wrapper = setup(threeGuessedWordProps)
+        const guessedWordsTableItemElement = findByTestAttribute(wrapper, 'guessed-words-table-item')
+        expect(guessedWordsTableItemElement.length).toBe(3)
+    })
 })
