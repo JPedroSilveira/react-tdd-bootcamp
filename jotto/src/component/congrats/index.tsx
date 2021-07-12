@@ -1,17 +1,9 @@
-export interface CongratsProps {
-    success: boolean
-}
-
-const Congrats: React.FC<CongratsProps> = ({
-    success
-}) => {
-    const getMessage = (): String => {
-        return success ? "Congratulations, you won!" : ""
-    }
-
+const Congrats: React.FC = () => {
     return (
         <div data-test="congrats">
-            <p data-test="congrats-message">{getMessage()}</p>
+            <p data-test="congrats-message">
+                Congratulations, you won!
+            </p>
         </div>
     )
 }
