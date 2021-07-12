@@ -8,9 +8,21 @@ export interface GuessedWordsProps {
 const GuessedWords: React.FC<GuessedWordsProps> = ({
     words
 }) => {
+    const renderInstruction = () => {
+        return (
+            <p data-test='guessed-words-instruction'>
+                Try to guesse the secret word!
+            </p>
+        )
+    }
+    const renderGuessedTable = () => {
+        return (
+            <div></div>
+        )
+    }
     return (
-        <div>
-
+        <div data-test='guessed-words'>
+            {words.length > 0 ? renderGuessedTable() : renderInstruction()}
         </div>
     )
 }

@@ -33,7 +33,7 @@ describe('if there are no words guessed', () => {
     })    
     test('render instructions text to guess a word', () => {
         const instructionElement = findByTestAttribute(wrapper, 'guessed-words-instruction')
-        expect(instructionElement.length).toBe(1)
+        expect(instructionElement.text().length).not.toBe(0)
     })
     test('render without table', () => {
         const tableElement = findByTestAttribute(wrapper, 'guessed-words-table')
