@@ -12,3 +12,18 @@ test('render without error', () => {
     const mainElement = findByTestAttribute(wrapper, 'input')
     expect(mainElement.length).toBe(1)
 })
+test('render form without error', () => {
+    const wrapper = setup()
+    const formElement = findByTestAttribute(wrapper, 'input-form')
+    expect(formElement.length).toBe(1)
+})
+test('render word input without error', () => {
+    const wrapper = setup()
+    const inputElement = findByTestAttribute(wrapper, 'input-form-word-input')
+    expect(inputElement.length).toBe(1)
+})
+test('render submit button without error', () => {
+    const wrapper = setup()
+    const submitButton = findByTestAttribute(wrapper, 'input-form-submit-button')
+    expect(submitButton.length).toBe(1)
+})
