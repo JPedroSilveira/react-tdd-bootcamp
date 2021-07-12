@@ -53,17 +53,17 @@ describe('if there are words guessed', () => {
     })
     test('render guessed words section', () => {
         const wrapper = setup(oneGuessedWordProps)
-        const guessedWordsSectionElement = findByTestAttribute(wrapper, 'guessed-words-section')
+        const guessedWordsSectionElement = findByTestAttribute(wrapper, 'guessed-words-guessed-section')
         expect(guessedWordsSectionElement.length).toBe(1)
     })
     test('correct number of guessed words (1)', () => {
         const wrapper = setup(oneGuessedWordProps)
-        const guessedWordsTableItemElement = findByTestAttribute(wrapper, 'guessed-words-table-item')
+        const guessedWordsTableItemElement = findByTestAttribute(wrapper, 'guessed-words-guessed-section-table-item')
         expect(guessedWordsTableItemElement.length).toBe(1)
     })
     test('correct number of guessed words (3)', () => {
         const wrapper = setup(threeGuessedWordProps)
-        const guessedWordsTableItemElement = findByTestAttribute(wrapper, 'guessed-words-table-item')
+        const guessedWordsTableItemElement = findByTestAttribute(wrapper, 'guessed-words-guessed-section-table-item')
         expect(guessedWordsTableItemElement.length).toBe(3)
     })
 })

@@ -10,21 +10,43 @@ const GuessedWords: React.FC<GuessedWordsProps> = ({
 }) => {
     const renderInstruction = () => {
         return (
-            <p data-test='guessed-words-instruction'>
+            <h3 data-test='guessed-words-instruction'>
                 Try to guesse the secret word!
-            </p>
+            </h3>
         )
     }
-    const renderGuessedWordsSection = () => {
+    const renderGuessedSection = () => {
         return (
-            <div>
-                
+            <div data-test='guessed-words-guessed-section'>
+                <h3>Guessed Words</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Guess</th>
+                            <th>Matching Letters</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {renderGuessedWordsRows()}
+                    </tbody>
+                </table>
             </div>
         )
     }
+    const renderGuessedWordsRows = () => {
+        return (
+            words.map((word, index) => (
+                <tr key={index} data-test='guessed-words-guessed-section-table-item'>
+                    <td>{word.value}</td>
+                    <td>{word.letterMatchCount}</td>
+                </tr>
+            ))
+        )
+    }
+    
     return (
         <div data-test='guessed-words'>
-            {words.length > 0 ? renderGuessedWordsSection() : renderInstruction()}
+            {words.length > 0 ? renderGuessedSection() : renderInstruction()}
         </div>
     )
 }
