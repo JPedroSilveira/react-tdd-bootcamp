@@ -8,7 +8,15 @@ const Congrats: React.FC<CongratsProps> = ({
     success
 }) => {
 
-    return <div></div>
+    const getMessage = (): String => {
+        return success ? "Congratulations, you won!" : ""
+    }
+
+    return (
+        <div data-test="congrats">
+            <p data-test="congrats-message">{getMessage()}</p>
+        </div>
+    )
 }
 
 export default Congrats
