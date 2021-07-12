@@ -1,10 +1,19 @@
-import React from "react"
+import { useState } from "react"
 
-const Input: React.FC = () => {
-    const [currentGuess, setCurrentGuess] = React.useState("")
+export interface InputProps {
+    onSubmit: (guess: string) => void
+}
+
+const Input: React.FC<InputProps> = () => {
+    const [currentGuess, setCurrentGuess] = useState('')
 
     const handleGuessChange = (changeEvent: React.ChangeEvent<HTMLInputElement>) => {
         setCurrentGuess(changeEvent.target.value)
+    }
+
+    const handleSubmitClick = (clickEvent: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        clickEvent.preventDefault()
+        setCurrentGuess('')
     }
 
     return (
@@ -19,6 +28,7 @@ const Input: React.FC = () => {
                 />
                 <button 
                     data-test='input-form-submit-button'
+                    onClick={handleSubmitClick}
                 >
                     Submit 
                 </button>
