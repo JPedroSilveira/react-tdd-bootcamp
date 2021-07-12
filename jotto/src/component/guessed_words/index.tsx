@@ -1,4 +1,3 @@
-import React from 'react'
 import GuessedWord from '../../type/GuessedWord'
 import './styles.css'
 
