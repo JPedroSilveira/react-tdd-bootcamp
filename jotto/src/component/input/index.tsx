@@ -1,6 +1,6 @@
 const Input: React.FC = () => {
     return (
-        <div>
+        <div data-test='input'>
             
         </div>
     )
