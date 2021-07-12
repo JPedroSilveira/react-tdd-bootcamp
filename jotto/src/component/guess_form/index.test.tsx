@@ -1,52 +1,46 @@
 import { shallow } from 'enzyme'
 import React from 'react'
-import Input, { InputProps } from '.'
+import GuessForm, { GuessFormProps } from '.'
 import { clickEventArgs, EnzymeShallowWrapper, findByTestAttribute, inputEventArgs, ReactUseState } from '../../test/TestUtils'
 
-const defaultProps: InputProps = {
+const defaultProps: GuessFormProps = {
     onSubmit: (guess: string) => {}
 }
 
-const setup = (props: InputProps) => {
+const setup = (props: GuessFormProps) => {
     return shallow(
-        <Input {...props}/>
+        <GuessForm {...props}/>
     )
 }
 
 test('render without error', () => {
     const wrapper = setup(defaultProps)
-    const mainElement = findByTestAttribute(wrapper, 'input')
+    const mainElement = findByTestAttribute(wrapper, 'guess-form')
     expect(mainElement.length).toBe(1)
-})
-
-test('render form without error', () => {
-    const wrapper = setup(defaultProps)
-    const formElement = findByTestAttribute(wrapper, 'input-form')
-    expect(formElement.length).toBe(1)
 })
 
 test('render word input without error', () => {
     const wrapper = setup(defaultProps)
-    const inputElement = findByTestAttribute(wrapper, 'input-form-word-input')
+    const inputElement = findByTestAttribute(wrapper, 'guess-form-word-input')
     expect(inputElement.length).toBe(1)
 })
 
 test('render submit button without error', () => {
     const wrapper = setup(defaultProps)
-    const submitButton = findByTestAttribute(wrapper, 'input-form-submit-button')
+    const submitButton = findByTestAttribute(wrapper, 'guess-form-submit-button')
     expect(submitButton.length).toBe(1)
 })
 
 test('insert text on input box change input value', () => {
     const guess = 'guess'
     const wrapper = setup(defaultProps)
-    const inputElementBeforeChange = findByTestAttribute(wrapper, 'input-form-word-input')
+    const inputElementBeforeChange = findByTestAttribute(wrapper, 'guess-form-word-input')
     inputElementBeforeChange.simulate('change', {
         target: { 
             value: guess 
         }
     })
-    const inputElementAfterChange = findByTestAttribute(wrapper, 'input-form-word-input')
+    const inputElementAfterChange = findByTestAttribute(wrapper, 'guess-form-word-input')
     expect(inputElementAfterChange.props().value).toBe(guess)
 })
 
@@ -58,7 +52,7 @@ describe('state controller input field', () => {
     beforeEach(() => {
         mockSetCurrentGuess.mockClear()
         originalUseState = React.useState
-        React.useState = () => ["", mockSetCurrentGuess]
+        React.useState = () => ['', mockSetCurrentGuess]
         wrapper = setup(defaultProps)
     })
 
@@ -71,7 +65,7 @@ describe('state controller input field', () => {
 
         wrapper = setup(defaultProps)
 
-        const inputElement = findByTestAttribute(wrapper, 'input-form-word-input')
+        const inputElement = findByTestAttribute(wrapper, 'guess-form-word-input')
 
         const mockEvent = inputEventArgs(guess)
         inputElement.simulate('change', mockEvent)
@@ -83,7 +77,7 @@ describe('state controller input field', () => {
 
         wrapper = setup(defaultProps)
 
-        const inputElement = findByTestAttribute(wrapper, 'input-form-word-input')
+        const inputElement = findByTestAttribute(wrapper, 'guess-form-word-input')
 
         const mockEvent = inputEventArgs(emptyGuess)
         inputElement.simulate('change', mockEvent)
@@ -93,7 +87,7 @@ describe('state controller input field', () => {
     test('on submit button clicked clear state', () => {
         wrapper = setup(defaultProps)
 
-        const buttonElement = findByTestAttribute(wrapper, 'input-form-submit-button')
+        const buttonElement = findByTestAttribute(wrapper, 'guess-form-submit-button')
         buttonElement.simulate('click', clickEventArgs)
 
         expect(mockSetCurrentGuess).toHaveBeenCalledWith('')
@@ -109,12 +103,12 @@ describe('on submit', () => {
             onSubmit: handleSubmit
         })
 
-        const inputElement = findByTestAttribute(wrapper, 'input-form-word-input')
+        const inputElement = findByTestAttribute(wrapper, 'guess-form-word-input')
 
         const mockEvent = inputEventArgs(guess)
         inputElement.simulate('change', mockEvent)
         
-        const buttonElement = findByTestAttribute(wrapper, 'input-form-submit-button')
+        const buttonElement = findByTestAttribute(wrapper, 'guess-form-submit-button')
         buttonElement.simulate('click', clickEventArgs)
 
         expect(handleSubmit).toHaveBeenCalledWith(guess)
@@ -126,7 +120,7 @@ describe('on submit', () => {
             onSubmit: handleSubmit
         })
         
-        const buttonElement = findByTestAttribute(wrapper, 'input-form-submit-button')
+        const buttonElement = findByTestAttribute(wrapper, 'guess-form-submit-button')
         buttonElement.simulate('click', clickEventArgs)
 
         expect(handleSubmit).toHaveBeenCalledWith(emptyGuess)
