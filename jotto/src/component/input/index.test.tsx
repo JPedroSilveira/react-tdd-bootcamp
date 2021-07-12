@@ -1,4 +1,5 @@
 import { shallow } from 'enzyme'
+import React from 'react'
 import Input from '.'
 import { findByTestAttribute } from '../../test/TestUtils'
 
@@ -27,7 +28,7 @@ test('render submit button without error', () => {
     const submitButton = findByTestAttribute(wrapper, 'input-form-submit-button')
     expect(submitButton.length).toBe(1)
 })
-test('correct input text', () => {
+test('insert text on input box change input value', () => {
     const guess = 'guess'
     const wrapper = setup()
     const inputElementBeforeChange = findByTestAttribute(wrapper, 'input-form-word-input')
@@ -40,3 +41,20 @@ test('correct input text', () => {
     console.log(inputElementAfterChange.debug())
     expect(inputElementAfterChange.props().value).toBe(guess)
 })
+
+describe('state controller input field', () => {
+    test('state updates with value of input upon change', () => {
+        const guess = 'guess'
+
+        const mockSetCurrentGuess = jest.fn()
+        React.useState = jest.fn(() => ["", mockSetCurrentGuess])
+
+        const wrapper = setup()
+        const inputElement = findByTestAttribute(wrapper, 'input-form-word-input')
+
+        const mockEvent = { target: { value: guess } }
+        inputElement.simulate('change', mockEvent)
+
+        expect(mockSetCurrentGuess).toHaveBeenCalledWith(guess)
+    })
+});
