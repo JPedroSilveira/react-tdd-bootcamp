@@ -27,3 +27,16 @@ test('render submit button without error', () => {
     const submitButton = findByTestAttribute(wrapper, 'input-form-submit-button')
     expect(submitButton.length).toBe(1)
 })
+test('correct input text', () => {
+    const guess = 'guess'
+    const wrapper = setup()
+    const inputElementBeforeChange = findByTestAttribute(wrapper, 'input-form-word-input')
+    inputElementBeforeChange.simulate('change', {
+        target: { 
+            value: guess 
+        }
+    })
+    const inputElementAfterChange = findByTestAttribute(wrapper, 'input-form-word-input')
+    console.log(inputElementAfterChange.debug())
+    expect(inputElementAfterChange.props().value).toBe(guess)
+})

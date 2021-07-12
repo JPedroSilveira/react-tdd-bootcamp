@@ -4,7 +4,7 @@ const Input: React.FC = () => {
     const [currentGuess, setCurrentGuess] = React.useState("")
 
     const handleGuessChange = (changeEvent: React.ChangeEvent<HTMLInputElement>) => {
-        setCurrentGuess(changeEvent.currentTarget.value)
+        setCurrentGuess(changeEvent.target.value)
     }
 
     return (
