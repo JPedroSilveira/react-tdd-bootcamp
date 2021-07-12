@@ -3,7 +3,7 @@ import App from './App'
 import { findByTestAttribute } from './test/TestUtils'
 
 const setup = () => {
-    return shallow(<App />)
+    return shallow(<App guessedWords={[]} secretWord='' />)
 }
 
 test('renders without error', () => {

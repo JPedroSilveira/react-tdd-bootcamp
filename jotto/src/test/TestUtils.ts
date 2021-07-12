@@ -1,6 +1,6 @@
-import Enzyme, { ShallowWrapper } from 'enzyme'
+import { ReactWrapper, ShallowWrapper } from 'enzyme'
 
-export const findByTestAttribute = (wrapper: Enzyme.ShallowWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>, val: String) => {
+export const findByTestAttribute = (wrapper: EnzymeShallowWrapper | EnzymeMountWrapper, val: string) => {
     return wrapper.find(`[data-test='${val}']`)
 }
 
@@ -16,3 +16,5 @@ export type ReactUseState = {
 }
 
 export type EnzymeShallowWrapper = ShallowWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>
+
+export type EnzymeMountWrapper = ReactWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>
