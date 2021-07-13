@@ -21,7 +21,7 @@ const setupWithOneGuess = (props: AppProps, guess: string): EnzymeMountWrapper =
 }
 
 describe('no words guessed', () => {
-    let wrapper
+    let wrapper: EnzymeMountWrapper
     beforeEach(() => {
         wrapper = setupWithoutGuess({
             secretWord: 'party',
