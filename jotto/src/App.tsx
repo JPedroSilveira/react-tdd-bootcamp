@@ -3,6 +3,8 @@ import GuessBox from './component/guess_box'
 import GuessedWords from './component/guessed_words'
 import GuessedWord from './type/GuessedWord'
 import { isSecretWordDiscovered } from './use_case/secretWordDiscover' 
+import { useEffect } from 'react'
+import { getSecretWord } from './action'
 
 export interface AppProps {
   secretWord: string,
@@ -13,6 +15,12 @@ const App: React.FC<AppProps> = ({
   secretWord,
   guessedWords
 }) => {
+  useEffect(() => {
+    const load = async () => {
+      await getSecretWord()
+    }
+    load()
+  }, [])
 
   return (
     <div className='app' data-test='app'>
@@ -24,3 +32,4 @@ const App: React.FC<AppProps> = ({
 }
 
 export default App;
+

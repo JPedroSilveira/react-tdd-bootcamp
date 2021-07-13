@@ -38,7 +38,7 @@ describe('get secret word', () => {
     beforeEach(() => {
         mockGetSecretWord.mockClear()
     })
-    test('get secret word on app mount', () => {
+    test('get secret word on app mount', async () => {
         setup()
         expect(mockGetSecretWord).toHaveBeenCalledTimes(1)
     })
