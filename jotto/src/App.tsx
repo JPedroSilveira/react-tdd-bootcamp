@@ -13,6 +13,7 @@ const App: React.FC<AppProps> = ({
   secretWord,
   guessedWords
 }) => {
+
   return (
     <div className='app' data-test='app'>
       <h1 data-test="app-title">Jotto</h1>
