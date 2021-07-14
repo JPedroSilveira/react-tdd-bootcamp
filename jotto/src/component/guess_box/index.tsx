@@ -1,14 +1,12 @@
 import React from "react"
 import GuessForm from '../guess_form'
 import Congrats from '../congrats'
+import { useSelector } from "react-redux"
+import { CombinedReducers } from "../../reducer"
 
-export interface GuessBoxProps {
-    success: boolean
-}
+const GuessBox: React.FC = () => {
+    const success = useSelector<CombinedReducers>(state => state.success)
 
-const GuessBox: React.FC<GuessBoxProps> = ({
-    success
-}) => {
     const handleGuessSubmit = (guess: string) => {
 
     }

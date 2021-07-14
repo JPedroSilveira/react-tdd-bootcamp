@@ -1,5 +1,9 @@
 import axios from  'axios'
 
+export interface ActionType {
+    name: string
+}
+
 export const actionTypes = { 
     CORRECT_GUESS: 'CORRECT_GUESS',
 }

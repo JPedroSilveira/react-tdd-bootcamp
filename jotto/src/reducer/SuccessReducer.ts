@@ -1,5 +1,10 @@
-import GuessedWord from '../type/GuessedWord'
+import { ActionType, actionTypes } from '../action'
 
-export default (state: GuessedWord[], action: object): boolean => {
-    return true
+export const success = (state=false, action: ActionType): boolean => {
+    switch(action.name) {
+        case (actionTypes.CORRECT_GUESS):
+            return true
+        default:
+            return state
+    }
 }

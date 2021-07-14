@@ -25,7 +25,7 @@ const App: React.FC<AppProps> = ({
   return (
     <div className='app' data-test='app'>
       <h1 data-test="app-title">Jotto</h1>
-      <GuessBox success={isSecretWordDiscovered(guessedWords, secretWord)} data-test='app-guess-box'/>
+      <GuessBox data-test='app-guess-box'/>
       <GuessedWords words={guessedWords} data-test='app-guessed-words'/>
     </div>
   );

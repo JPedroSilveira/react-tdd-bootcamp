@@ -1,6 +1,10 @@
 import { combineReducers } from "redux"
-import success from './SuccessReducer'
+import { success } from './SuccessReducer'
 
-export default combineReducers({
+export interface CombinedReducers {
+    success: boolean
+}
+
+export default combineReducers<CombinedReducers>({
     success
 })
