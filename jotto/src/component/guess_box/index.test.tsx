@@ -1,25 +1,32 @@
-import { shallow } from 'enzyme'
-import GuessBox, { GuessBoxProps } from '.'
-import { EnzymeShallowWrapper, findByTestAttribute } from '../../test/TestUtils'
+import { mount } from 'enzyme'
+import { Provider } from 'react-redux'
+import GuessBox from '.'
+import { CombinedReducers } from '../../reducer'
+import { EnzymeMountWrapper, findByTestAttribute, storeFactory } from '../../test/TestUtils'
 
-const unsuccessProps: GuessBoxProps = {
+const unsuccessState: CombinedReducers = {
     success: false
 }
 
-const successProps: GuessBoxProps = {
+const successState: CombinedReducers = {
     success: true
 }
 
-const setup = (props: GuessBoxProps): EnzymeShallowWrapper => {
-    return shallow(<GuessBox {...props} />)
+const setup = (initialState: CombinedReducers) => {
+    const store = storeFactory(initialState)
+    return mount(
+        <Provider store={store}>
+            <GuessBox />
+        </Provider>
+    )
 }
 
 describe('render', () => {
-    let wrapper: EnzymeShallowWrapper
+    let wrapper: EnzymeMountWrapper
 
     describe('success is true', () => {
         beforeEach(() => {
-            wrapper = setup(successProps)
+            wrapper = setup(successState)
         })
     
         test('renders without error', () => {
@@ -37,7 +44,7 @@ describe('render', () => {
     })
     describe('success is false', () => {
         beforeEach(() => {
-            wrapper = setup(unsuccessProps)
+            wrapper = setup(unsuccessState)
         })
         test('renders without error', () => {
             const mainElement = findByTestAttribute(wrapper, 'guess-box')

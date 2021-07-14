@@ -3,3 +3,4 @@ module.exports = {
     __esModule: true,
     getSecretWord: jest.fn().mockReturnValue(Promise.resolve('secret'))
 }
+ export default undefined

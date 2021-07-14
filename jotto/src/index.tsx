@@ -9,7 +9,7 @@ import { configureStore } from './reducer/ConfigureStore'
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={configureStore}>
-      <App />
+      <App secretWord='' guessedWords={[]}/>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

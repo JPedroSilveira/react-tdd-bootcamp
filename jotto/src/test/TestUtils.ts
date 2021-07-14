@@ -1,4 +1,10 @@
 import { ReactWrapper, ShallowWrapper } from 'enzyme'
+import { AnyAction, createStore, EmptyObject, Store } from 'redux'
+import rootReducer, { CombinedReducers } from '../reducer'
+
+export const storeFactory = (initialState: CombinedReducers): Store<EmptyObject & CombinedReducers, AnyAction> => {
+    return createStore(rootReducer, initialState)
+}
 
 export const findByTestAttribute = (wrapper: EnzymeShallowWrapper | EnzymeMountWrapper, val: string) => {
     return wrapper.find(`[data-test='${val}']`)

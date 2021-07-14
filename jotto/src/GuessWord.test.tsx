@@ -1,9 +1,15 @@
 import { mount } from 'enzyme'
 import { clickEventArgs, EnzymeMountWrapper, findByTestAttribute, inputEventArgs } from './test/TestUtils'
+import { Provider } from 'react-redux'
+import { configureStore } from './reducer/ConfigureStore'
 import App, { AppProps } from './App'
 
 const setupWithoutGuess = (props: AppProps): EnzymeMountWrapper => {
-    const wrapper = mount(<App {...props} />)
+    const wrapper = mount(
+        <Provider store={configureStore}>
+            <App {...props} />
+        </Provider>
+    )
 
     return wrapper
 }
