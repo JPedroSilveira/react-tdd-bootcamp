@@ -1,6 +1,6 @@
 import { mount } from 'enzyme'
 import App from './App'
-import { findByTestAttribute, storeFactory } from './test/TestUtils'
+import { findByTestAttribute, storeFactory } from './test/Utils'
 
 jest.mock('./action')
 import { getSecretWord } from './action'

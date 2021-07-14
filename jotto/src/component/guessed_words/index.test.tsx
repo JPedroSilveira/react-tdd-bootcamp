@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { findByTestAttribute } from '../../test/TestUtils'
+import { findByTestAttribute } from '../../test/Utils'
 import GuessedWords, { GuessedWordsProps } from '.'
 import { ShallowWrapper } from 'enzyme'
 

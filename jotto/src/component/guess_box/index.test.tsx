@@ -2,7 +2,7 @@ import { mount } from 'enzyme'
 import { Provider } from 'react-redux'
 import GuessBox from '.'
 import { CombinedReducers } from '../../reducer'
-import { EnzymeMountWrapper, findByTestAttribute, storeFactory } from '../../test/TestUtils'
+import { EnzymeMountWrapper, findByTestAttribute, storeFactory } from '../../test/Utils'
 
 const unsuccessState: CombinedReducers = {
     success: false

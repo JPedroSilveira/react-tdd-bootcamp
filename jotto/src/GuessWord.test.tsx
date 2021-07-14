@@ -1,5 +1,5 @@
 import { mount } from 'enzyme'
-import { clickEventArgs, EnzymeMountWrapper, findByTestAttribute, inputEventArgs } from './test/TestUtils'
+import { clickEventArgs, EnzymeMountWrapper, findByTestAttribute, inputEventArgs } from './test/Utils'
 import { Provider } from 'react-redux'
 import { configureStore } from './reducer/ConfigureStore'
 import App, { AppProps } from './App'

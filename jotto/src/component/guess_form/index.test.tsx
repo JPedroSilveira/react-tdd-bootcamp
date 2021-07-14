@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme'
 import React from 'react'
 import GuessForm, { GuessFormProps } from '.'
-import { clickEventArgs, EnzymeShallowWrapper, findByTestAttribute, inputEventArgs, ReactUseState } from '../../test/TestUtils'
+import { clickEventArgs, EnzymeShallowWrapper, findByTestAttribute, inputEventArgs, ReactUseState } from '../../test/Utils'
 
 const defaultProps: GuessFormProps = {
     onSubmit: (guess: string) => {}

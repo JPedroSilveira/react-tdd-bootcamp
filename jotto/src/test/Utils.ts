@@ -1,9 +1,10 @@
 import { ReactWrapper, ShallowWrapper } from 'enzyme'
-import { AnyAction, createStore, EmptyObject, Store } from 'redux'
+import { AnyAction, applyMiddleware, createStore, EmptyObject, Store } from 'redux'
 import rootReducer, { CombinedReducers } from '../reducer'
+import { middlewares } from '../reducer/ConfigureStore'
 
 export const storeFactory = (initialState: CombinedReducers): Store<EmptyObject & CombinedReducers, AnyAction> => {
-    return createStore(rootReducer, initialState)
+    return createStore(rootReducer, initialState, applyMiddleware(...middlewares))
 }
 
 export const findByTestAttribute = (wrapper: EnzymeShallowWrapper | EnzymeMountWrapper, val: string) => {
