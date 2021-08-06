@@ -1,5 +1,10 @@
-import { ActionType } from "../action"
+import { ActionType, actionTypes } from '../action'
 
 export const secretWord = (state: string = '', action: ActionType): string => {
-    return state
+	switch (action.type) {
+		case actionTypes.SECRET_WORD:
+			return action.payload
+		default:
+			return state
+	}
 }
